@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GTA 5 Mods</title>
+</head>
+<body>
+    <h1>GTA 5 Mods</h1>
+    <ul>
+        {% for mod in mods %}
+            <li>
+                <h2><a href="#">{{ mod.title }}</a></h2>
+                <p>by {{ mod.author.username }}</p>
+                <p>{{ mod.description }}</p>
+            </li>
+        {% empty %}
+            <li>No mods have been uploaded yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
