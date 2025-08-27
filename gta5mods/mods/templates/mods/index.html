@@ -1,7 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>GTA 5 Mods</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'mods/styles.css' %}">
 </head>
 <body>
     <header>
@@ -27,5 +29,6 @@
             <li>No mods have been uploaded yet.</li>
         {% endfor %}
     </ul>
+    <script src="{% static 'mods/scripts.js' %}"></script>
 </body>
 </html>
