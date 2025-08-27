@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Mod
 from .forms import ModForm
-from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -9,13 +9,13 @@ def index(request):
     mods = Mod.objects.all()
     return render(request, 'mods/index.html', {'mods': mods})
 
+@login_required
 def upload_mod(request):
     if request.method == 'POST':
         form = ModForm(request.POST, request.FILES)
         if form.is_valid():
             mod = form.save(commit=False)
-            # This is a temporary solution. We will use the logged in user later.
-            mod.author = User.objects.first()
+            mod.author = request.user
             mod.save()
             return redirect('index')
     else:
